@@ -3,6 +3,9 @@
  */
 package com.carol.negocio;
 
+import java.io.IOException;
+import java.util.List;
+
 import com.carol.datos.ConsultaDatos;
 
 /**
@@ -11,12 +14,18 @@ import com.carol.datos.ConsultaDatos;
  */
 public class LogicaNegocio {
 	
-	public  Integer cuantosCoches(String nombre) {
+	public  int cuantosCoches(String nombre) throws IOException {
 		//Usar clase datos
 		ConsultaDatos consultaDatos = new ConsultaDatos();
+		List<String> nombres = consultaDatos.consultaCoches(); //Array de string que devuelve la capa de datos
+		int contador = 0;
 		
-		
-		return null;
+		for (String nombreArray : nombres) {
+			if(nombreArray.contentEquals(nombre)) {
+				contador++;
+			}
+		}
+		return contador;
 	}
 
 }
